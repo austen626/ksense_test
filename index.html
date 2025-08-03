@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthcare API Assessment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #333;
+    }
+    #results {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Healthcare API Assessment</h1>
+  <p>Processing patient data... Check the browser console for detailed logs.</p>
+  <div id="results"></div>
+
+  <script src="test.js"></script>
+  <script>
+    // Call the main function when the page loads
+    window.onload = async () => {
+      const resultsDiv = document.getElementById('results');
+      try {
+        const submission = await main();
+        resultsDiv.innerHTML = `
+          <h2>Submission Results</h2>
+          <pre>${JSON.stringify(submission, null, 2)}</pre>
+        `;
+      } catch (error) {
+        resultsDiv.innerHTML = `
+          <h2>Error</h2>
+          <p class="error">Failed to process patient data: ${error.message}</p>
+        `;
+      }
+    };
+  </script>
+</body>
+</html>
