@@ -1,7 +1,6 @@
 // API Key
 const API_KEY = "ak_84fd6c13e6b3119ef3cb24f9cfca97df8fd33599aabdc881";
 
-// Function to simulate API fetch with retry logic
 async function fetchPatients(page = 1, limit = 5, retries = 10, delay = 1000) {
   try {
     const response = await fetch(`https://assessment.ksensetech.com/api/patients?page=${page}&limit=${limit}`, {
@@ -129,7 +128,6 @@ function processPatients(patients) {
   return { highRiskPatients, feverPatients, dataQualityIssues };
 }
 
-// Main function to fetch all patients and process results
 async function main() {
   const allPatients = [];
   let page = 1;
@@ -161,8 +159,6 @@ async function main() {
 
   console.log("Submission Payload:", JSON.stringify(submission, null, 2));
 
-  // In a real scenario, submit the results to the API
-  
   await fetch('https://assessment.ksensetech.com/api/submit-assessment', {
     method: 'POST',
     headers: {
